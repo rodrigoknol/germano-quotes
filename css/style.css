@@ -1,3 +1,16 @@
+:root {
+  --base-size: 20px;
+
+  --gray: rgb(60,60,80);
+}
+
 body{
-  font-size: 20px;
+  font-size: var(--base-size);
+  color: var(--gray);
+}
+
+main{
+  width: 50rem;
+  max-width: 90%;
+  margin: 3rem auto 0;
 }
