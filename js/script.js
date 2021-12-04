@@ -5,6 +5,23 @@ async function getData(url) {
   return response.json();
 }
 
+if ("serviceWorker" in navigator) {
+  window.addEventListener(
+    "load",
+    () => {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then((registration) => {
+          return null;
+        })
+        .catch((err) => {
+          console.log("ServiceWorker registration failed: ", err);
+        });
+    },
+    { once: true }
+  );
+}
+
 class quotes {
   domQuote = document.getElementById("theQuote");
   quoteContainer = document.getElementById("quoteContainer");

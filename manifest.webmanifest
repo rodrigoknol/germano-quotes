@@ -1,0 +1,44 @@
+{
+  "short_name": "Germano Quotes",
+  "name": "Germano Quotes",
+  "description": "Pérolas e conhecimento infinito.",
+  "orientation": "portrait-primary",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#fafad2",
+  "background_color": "#fafad2",
+  "categories": ["productivity", "business"],
+  "icons": [
+    {
+      "src": "/img/favicon/favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/img/favicon/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/favicon/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
