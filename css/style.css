@@ -133,6 +133,10 @@ main {
   object-position: 50% 50%;
 }
 
+section{
+  text-align: center;
+}
+
 @media (max-width: 800px) {
   button,
   .btn {
