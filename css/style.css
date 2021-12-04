@@ -135,6 +135,7 @@ main {
   object-position: 50% 50%;
   border: calc(0.25 * var(--base-size)) solid white;
   margin: var(--base-size) 0;
+  max-height: 50vh;
 }
 
 section{
