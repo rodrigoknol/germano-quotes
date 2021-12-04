@@ -6,16 +6,15 @@ async function getData(url) {
 }
 
 class quotes {
-  constructor() {
-    this.data = [];
+  domQuote = document.getElementById("theQuote");
+  button = document.getElementById("shuffleButton");
+
+  constructor(quotesData) {
+    this.data = quotesData.quotes;
     this.quote = "Eu gosto de bunda, mas não de todas 🍞";
-    this.domQuote = document.getElementById("theQuote");
-    this.button = document.getElementById("theButton");
   }
 
-  init(data) {
-    this.data = data.quotes;
-
+  init() {
     this.validateButton();
     this.printQuote();
   }
@@ -36,8 +35,7 @@ class quotes {
   }
 }
 
-const quotesManager = new quotes();
-
-getData("/json/quotes.json").then((data) => {
-  quotesManager.init(data);
+getData("/json/quotes.json").then((quotesData) => {
+  const quotesManager = new quotes(quotesData);
+  quotesManager.init();
 });
