@@ -27,7 +27,8 @@ blockquote {
   justify-content: center;
 }
 
-button, .btn {
+button,
+.btn {
   font-family: var(--font-sans);
   background: var(--secondary);
   margin-top: 1rem;
@@ -42,11 +43,12 @@ button, .btn {
   display: inline-block;
 }
 
-button:hover, .btn:hover {
+button:hover,
+.btn:hover {
   filter: brightness(1.2);
 }
 
-button:first-of-type{
+button:first-of-type {
   background: var(--primary);
 }
 
@@ -59,7 +61,7 @@ cite {
 h1 {
   font-weight: 500;
   font-size: calc(2.75 * var(--base-size));
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 hr {
@@ -79,8 +81,61 @@ main {
   height: 100vh;
 }
 
+.motivation {
+  --background: rgb(0, 0, 0);
+  --gray: rgb(255, 255, 255);
+  --gray-light: rgb(250, 250, 250);
+}
+
+.motivation main {
+  justify-content: flex-end;
+}
+
+.motivation blockquote {
+  text-align: center;
+}
+
+.motivation h1 {
+  font-size: var(--base-size);
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.motivation .hidden-motivation {
+  display: none;
+}
+
+.motivation-big-text {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: calc(0.5 * 2vw);
+  text-align: center;
+  font-size: clamp(
+    calc(2 * var(--base-size)),
+    10vw,
+    calc(3.25 * var(--base-size))
+  );
+}
+
+.motivation-container,
+.motivation-img {
+  flex: 1;
+}
+
+.motivation-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.motivation-img {
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
 @media (max-width: 800px) {
-  button, .btn {
+  button,
+  .btn {
     display: block;
     width: 100%;
   }
@@ -91,7 +146,7 @@ main {
     --background: rgb(60, 60, 80);
     --primary: rgb(135, 60, 190);
     --secondary: rgb(150, 110, 220);
-    --gray: rgb(250,250,250);
+    --gray: rgb(250, 250, 250);
     --gray-light: rgb(160, 160, 180);
   }
 }

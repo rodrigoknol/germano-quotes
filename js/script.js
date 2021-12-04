@@ -7,42 +7,93 @@ async function getData(url) {
 
 class quotes {
   domQuote = document.getElementById("theQuote");
+  quoteContainer = document.getElementById("quoteContainer");
   shuffleBtn = document.getElementById("shuffleButton");
   shareBtn = document.getElementById("shareButton");
+  motivationBtn = document.getElementById("motivationButton");
+  body = document.body;
 
   constructor(quotesData) {
-    this.data = quotesData.quotes;
-    this.quote = "Eu gosto de bunda, mas não de todas 🍞";
+    this.quotes = quotesData.quotes;
+    this.images = quotesData.images;
+    this.motivation = quotesData.motivation;
   }
 
   init() {
-    this.validateButton();
-    this.printQuote();
-    this.updateShareBtn();
+    const quote = this.randomItem(this.quotes);
+    this.addListenerOnBtns();
+    this.printQuote(quote);
+    this.updateShareBtn(quote);
   }
 
-  validateButton() {
+  randomSelection(length) {
+    return Math.floor(Math.random() * length);
+  }
+
+  randomItem(base) {
+    return base[this.randomSelection(base.length)];
+  }
+
+  addListenerOnBtns() {
     this.shuffleBtn.addEventListener("click", () => {
-      this.printQuote();
-      this.updateShareBtn();
+      const quote = this.randomItem(this.quotes);
+      this.printQuote(quote);
+      this.updateShareBtn(quote);
+      if (this.body.classList.contains("motivation")) {
+        this.generateMotivation();
+      }
+    });
+
+    this.motivationBtn.addEventListener("click", () => {
+      this.toggleMotivation();
     });
   }
 
-  selectQuote() {
-    this.quote = this.data[Math.floor(Math.random() * this.data.length)];
+  printQuote(quote) {
+    this.domQuote.innerText = quote;
   }
 
-  printQuote() {
-    this.selectQuote();
-    this.domQuote.innerText = this.quote;
+  toggleMotivation() {
+    this.removeMotivation();
+    this.body.classList.toggle("motivation");
+    if (this.body.classList.contains("motivation")) {
+      this.generateMotivation();
+    }
   }
 
-  updateShareBtn() {
+  removeMotivation() {
+    const motivation = document?.getElementById("motivationContainer");
+    motivation && motivation.remove();
+  }
+
+  generateMotivation() {
+    this.removeMotivation();
+    const image = this.randomItem(this.images);
+
+    const bigText = document.createElement("span");
+    const motivationalText = this.randomItem(this.motivation);
+    bigText.classList.add("motivation-big-text");
+    bigText.innerText = motivationalText;
+
+    const img = document.createElement("img");
+    img.alt = image.alt;
+    img.src = `/img/motivation/${image.file}.jpg`;
+    img.classList.add("motivation-img");
+
+    const container = document.createElement("div");
+    container.classList.add("motivation-container");
+    container.id = "motivationContainer";
+    container.append(img, bigText);
+
+    this.quoteContainer.prepend(container);
+  }
+
+  updateShareBtn(quote) {
     const baseURL =
       "https://api.whatsapp.com/send?text=Uma vez Paulo Germano disse: ";
     const finalText =
       "Concorda? Descubra mais sabedoria e pílulas do conhecimento em https://germano-quotes.netlify.app/";
-    const url = `${baseURL}"${this.quote}". ${finalText}`;
+    const url = `${baseURL}"${quote}". ${finalText}`;
     this.shareBtn.href = encodeURI(url);
   }
 }
