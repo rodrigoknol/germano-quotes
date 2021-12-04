@@ -7,7 +7,8 @@ async function getData(url) {
 
 class quotes {
   domQuote = document.getElementById("theQuote");
-  button = document.getElementById("shuffleButton");
+  shuffleBtn = document.getElementById("shuffleButton");
+  shareBtn = document.getElementById("shareButton");
 
   constructor(quotesData) {
     this.data = quotesData.quotes;
@@ -17,11 +18,13 @@ class quotes {
   init() {
     this.validateButton();
     this.printQuote();
+    this.updateShareBtn();
   }
 
   validateButton() {
-    this.button.addEventListener("click", () => {
+    this.shuffleBtn.addEventListener("click", () => {
       this.printQuote();
+      this.updateShareBtn();
     });
   }
 
@@ -32,6 +35,15 @@ class quotes {
   printQuote() {
     this.selectQuote();
     this.domQuote.innerText = this.quote;
+  }
+
+  updateShareBtn() {
+    const baseURL =
+      "https://api.whatsapp.com/send?text=Uma vez Paulo Germano disse: ";
+    const finalText =
+      "Concorda? Descubra mais sabedoria e pílulas do conhecimento em https://germano-quotes.netlify.app/";
+    const url = `${baseURL}"${this.quote}". ${finalText}`;
+    this.shareBtn.href = encodeURI(url);
   }
 }
 
