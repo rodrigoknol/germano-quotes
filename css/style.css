@@ -119,11 +119,6 @@ main {
   );
 }
 
-.motivation-container,
-.motivation-img {
-  flex: 1;
-}
-
 .motivation-container {
   display: flex;
   flex-direction: column;
@@ -135,17 +130,17 @@ main {
   object-position: 50% 50%;
   border: calc(0.25 * var(--base-size)) solid white;
   margin: var(--base-size) 0;
-  max-height: 50vh;
+  max-height: 60vh;
 }
 
-section{
+section {
   background: var(--background);
   position: sticky;
   bottom: 0;
   border-top: 1px solid var(--background-darker);
 }
 
-section{
+section {
   text-align: center;
 }
 
@@ -157,6 +152,9 @@ section{
   .btn {
     display: block;
     width: 100%;
+  }
+  .motivation-img {
+    max-height: 35vh;
   }
 }
 
