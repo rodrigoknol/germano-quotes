@@ -1,4 +1,4 @@
-const version = "2.0.0";
+const version = "1";
 const cacheName = `germano-quotes-v${version}`;
 
 const main = [
